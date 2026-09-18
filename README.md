@@ -11,8 +11,8 @@ STUDIO非依存の静的サイトとして作り直したもの。実績（Works
 
 1. 画像を `assets/images/works/` に置く
    - 一覧サムネイル：`<id>-thumb.webp`（横長。974×730くらいの比率）
-   - 詳細ページのメイン画像：`<id>-main.png`
-   - 全体デザインの縦長キャプチャ（任意）：`<id>-full.png`
+   - 詳細ページのメイン画像：`<id>-main.webp`
+   - 全体デザインの縦長キャプチャ（任意）：`<id>-full.webp`
 2. `data/works.json` の **配列の先頭** に1件ぶん追記する（先頭が一覧の左上に並ぶ）
 3. 次のコマンドを実行する
 
@@ -32,7 +32,7 @@ node build.js
   "tag": "仮想",
   "date": "2026/9/18",
   "thumb": "assets/images/works/newwork-thumb.webp",
-  "mainImage": "assets/images/works/newwork-main.png",
+  "mainImage": "assets/images/works/newwork-main.webp",
   "sections": [
     { "heading": "概要", "blocks": [{ "text": "どんな作品かの説明。" }] }
   ]
@@ -43,7 +43,7 @@ node build.js
 |---|---|
 | `id` | URLになる英数字。`works/<id>.html` として出力される |
 | `title` | 作品名（一覧・詳細の見出し・ページタイトル） |
-| `category` / `tag` | 一覧とメタ表示の「Website｜仮想」の部分 |
+| `category` / `tag` | 一覧とメタ表示の「Website \| 仮想」の部分 |
 | `date` | 詳細ページの青いバッジ |
 | `thumb` | 一覧のサムネイル |
 | `mainImage` | 詳細ページ上部の大きい画像（省略可） |
@@ -61,7 +61,7 @@ node build.js
     { "text": "段落。改行したいときは \n を入れる。" },
     { "sub": "太字の小見出し" },
     { "list": ["箇条書き1", "箇条書き2"] },
-    { "image": "assets/images/works/newwork-full.png", "alt": "全体デザイン" }
+    { "image": "assets/images/works/newwork-full.webp", "alt": "全体デザイン" }
   ]
 }
 ```
@@ -117,6 +117,17 @@ STUDIOのフォーム機能は使えないので、送信先をGoogleフォー�
 ---
 
 ## 4. その他の編集
+
+### 画像について
+
+詳細ページの画像は **WebP** にしてある（PNGのままだと1枚400KB〜1.5MBあり、表示が重いため）。
+新しくPNGを置く場合は、次のコマンドでWebPに変換してから `works.json` のパスを `.webp` にするとよい。
+
+```bash
+python -c "from PIL import Image; Image.open('assets/images/works/xxx.png').convert('RGB').save('assets/images/works/xxx.webp','WEBP',quality=90,method=6)"
+```
+
+---
 
 | 変えたいもの | 編集する場所 |
 |---|---|

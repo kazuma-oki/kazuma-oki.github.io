@@ -30,6 +30,16 @@
   --detail-width: 880px;
 }
 
+/* ページ遷移をクロスフェードにする（対応ブラウザのみ） */
+@view-transition { navigation: auto; }
+
+@media (prefers-reduced-motion: no-preference) {
+  ::view-transition-old(root) { animation: vt-out 0.22s ease both; }
+  ::view-transition-new(root) { animation: vt-in 0.28s ease both; }
+}
+@keyframes vt-out { to { opacity: 0; } }
+@keyframes vt-in { from { opacity: 0; } }
+
 /* ---------- base ---------- */
 *, *::before, *::after { box-sizing: border-box; }
 
@@ -92,16 +102,37 @@ a { color: inherit; text-decoration: none; }
 }
 
 .gnav a {
+  position: relative;
   display: block;
-  padding: 9.5px 0;
+  padding: 10.5px 0;
   font-family: var(--font-en);
   font-size: 15px;
   font-weight: 500;
   line-height: 21px;
   color: var(--text);
+}
+
+.nav-label {
+  display: block;
   transition: transform var(--ease-dur) var(--ease);
 }
-.gnav a:hover { transform: scale(1.2); }
+.gnav a:hover .nav-label,
+.footer-nav a:hover .nav-label { transform: scale(1.2); }
+
+/* ホバーで下から出る2pxのライン（旧サイトと同じ挙動） */
+.nav-underline {
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  width: 0;
+  height: 2px;
+  background: #000;
+  transform: translateX(-50%) scaleX(1.2);
+  transition: width var(--ease-dur) var(--ease);
+  pointer-events: none;
+}
+.gnav a:hover .nav-underline,
+.footer-nav a:hover .nav-underline { width: 100%; }
 
 .nav-toggle {
   display: none;
@@ -130,7 +161,6 @@ a { color: inherit; text-decoration: none; }
 .hero {
   position: relative;
   height: 100vh;
-  max-height: 1000px;
   overflow: hidden;
 }
 
@@ -290,6 +320,7 @@ a { color: inherit; text-decoration: none; }
   gap: 70px;
 }
 .footer-nav a {
+  position: relative;
   display: block;
   padding: 10.5px 0;
   font-family: var(--font-en);
@@ -297,20 +328,18 @@ a { color: inherit; text-decoration: none; }
   font-weight: 500;
   line-height: 21px;
   color: var(--text);
-  transition: transform var(--ease-dur) var(--ease);
 }
-.footer-nav a:hover { transform: scale(1.2); }
 
 .social {
   display: flex;
   align-items: center;
-  gap: 22px;
+  gap: 20px;
 }
 .social a {
   display: block;
-  color: var(--dark);
+  color: #222;
 }
-.social svg { width: 20px; height: 20px; fill: currentColor; }
+.social svg { display: block; width: 24px; height: 24px; fill: currentColor; }
 
 /* ---------- 下層ページ共通 ---------- */
 .work-detail { padding-bottom: 100px; }

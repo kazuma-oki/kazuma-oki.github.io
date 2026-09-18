@@ -32,7 +32,7 @@ TARGETS = {
         CMS + "s-974x730_v-fs_webp_0fecd3a3-9313-40e7-b8d5-3dd551690d7d_large.webp",
         CMS + "s-974x730_v-fs_webp_0fecd3a3-9313-40e7-b8d5-3dd551690d7d_small.webp",
     ],
-    # Works詳細のメイン画像
+    # Works詳細のメイン画像（PNGで配信されているため、取得後にWebPへ変換する）
     "works/greenloop-main.png": [CMS + "s-974x730_v-fs_webp_d6a72f28-6382-47cd-865c-efe40013eb31.png"],
     "works/portfolio-main.png": [CMS + "s-973x730_v-fs_webp_676be846-2452-4330-bbce-79873e51836e.png"],
     "works/kaiza-main.png": [CMS + "s-974x730_v-fs_webp_5b675467-02c3-4513-adb3-acef3eac5384.png"],
@@ -47,6 +47,21 @@ def fetch(url):
         return r.read()
 
 
+def to_webp(path):
+    """PNGで取得した画像をWebPへ変換する（表示品質は保ったまま容量を1/10程度にする）"""
+    try:
+        from PIL import Image
+    except ImportError:
+        print("  Pillow未導入のためPNGのまま使用します（pip install pillow で変換可能）")
+        return
+    if path.suffix.lower() != ".png":
+        return
+    out = path.with_suffix(".webp")
+    Image.open(path).convert("RGB").save(out, "WEBP", quality=90, method=6)
+    path.unlink()
+    print(f"   -> {out.name}  {out.stat().st_size // 1024}KB")
+
+
 def main():
     for name, candidates in TARGETS.items():
         dest = OUT / name
@@ -59,6 +74,7 @@ def main():
                 continue
             dest.write_bytes(data)
             print(f"OK {name}  {len(data) // 1024}KB  <- {url.rsplit('/', 1)[-1]}")
+            to_webp(dest)
             break
         else:
             print(f"NG {name} : 取得できませんでした")

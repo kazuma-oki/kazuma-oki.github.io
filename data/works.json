@@ -6,7 +6,7 @@
     "tag": "仮想",
     "date": "2025/4/8",
     "thumb": "assets/images/works/greenloop-thumb.webp",
-    "mainImage": "assets/images/works/greenloop-main.png",
+    "mainImage": "assets/images/works/greenloop-main.webp",
     "sections": [
       {
         "heading": "作品URL",
@@ -67,7 +67,7 @@
       {
         "heading": "全体デザイン",
         "blocks": [
-          { "image": "assets/images/works/greenloop-full.png", "alt": "Green Loop コーポレートサイトの全体デザイン" }
+          { "image": "assets/images/works/greenloop-full.webp", "alt": "Green Loop コーポレートサイトの全体デザイン" }
         ]
       }
     ]
@@ -79,7 +79,7 @@
     "tag": "自主制作",
     "date": "2025/3/30",
     "thumb": "assets/images/works/portfolio-thumb.webp",
-    "mainImage": "assets/images/works/portfolio-main.png",
+    "mainImage": "assets/images/works/portfolio-main.webp",
     "sections": [
       {
         "heading": "概要",
@@ -134,7 +134,7 @@
     "tag": "仮想",
     "date": "2025/3/30",
     "thumb": "assets/images/works/kaiza-thumb.webp",
-    "mainImage": "assets/images/works/kaiza-main.png",
+    "mainImage": "assets/images/works/kaiza-main.webp",
     "sections": [
       {
         "heading": "作品URL",
