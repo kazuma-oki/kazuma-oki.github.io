@@ -1,0 +1,38 @@
+<section class="hero">
+  <div class="hero-image">
+    <img src="{{base}}{{heroImage}}" alt="{{heroImageAlt}}" fetchpriority="high" width="1600" height="2400">
+  </div>
+  <div class="hero-body">
+    <h1 class="hero-title">
+      {{heroTitleLines}}
+    </h1>
+    <p class="hero-sub">{{heroSubtitle}}</p>
+  </div>
+</section>
+
+<section class="works" id="work">
+  <div class="section-inner">
+    <h2 class="section-title appear">Works</h2>
+    <div class="section-rule appear"></div>
+    <ul class="work-list">
+      <!-- @each works -->
+      <li class="work-card appear">
+        <a href="{{base}}works/{{id}}.html">
+          <span class="work-thumb"><img src="{{base}}{{thumb}}" alt="{{title}}" loading="lazy" width="974" height="730"></span>
+          <span class="work-meta">{{category}}｜{{tag}}</span>
+          <span class="work-name">{{title}}</span>
+        </a>
+      </li>
+      <!-- @end -->
+    </ul>
+  </div>
+</section>
+
+<section class="about-banner">
+  <a href="{{base}}{{aboutBannerHref}}">
+    <span class="about-banner-inner">
+      <span class="about-banner-title">{{aboutBannerHeading}}</span>
+      <span class="about-banner-sub">{{aboutBannerSub}}</span>
+    </span>
+  </a>
+</section>

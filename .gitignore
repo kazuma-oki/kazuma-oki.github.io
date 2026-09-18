@@ -1,0 +1,6 @@
+# OS
+Thumbs.db
+.DS_Store
+
+# 移植時の中間データ
+tools/extracted/

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{{title}}</title>
+<meta name="description" content="{{description}}">
+<meta property="og:site_name" content="{{siteName}}">
+<meta property="og:title" content="{{title}}">
+<meta property="og:description" content="{{description}}">
+<meta property="og:type" content="{{ogType}}">
+<meta property="og:image" content="{{ogImage}}">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="format-detection" content="telephone=no,email=no,address=no">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500&family=Noto+Sans+JP:wght@300;400;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="{{base}}assets/css/style.css">
+<noscript><style>.appear{opacity:1;transform:none}</style></noscript>
+</head>
+<body>
+<a class="skip-link" href="#main">本文へスキップ</a>
+
+<header class="site-header" id="top">
+  <a class="logo" href="{{base}}index.html">{{logo}}</a>
+  <nav class="gnav" id="gnav" aria-label="メインナビゲーション">
+    <ul>
+      {{nav}}
+    </ul>
+  </nav>
+  <button class="nav-toggle" id="navToggle" type="button" aria-label="メニューを開く" aria-expanded="false" aria-controls="gnav">
+    <span></span><span></span>
+  </button>
+</header>
+
+<main id="main">
+{{content}}
+</main>
+
+<footer class="site-footer">
+  <nav class="footer-nav" aria-label="フッターナビゲーション">
+    <ul>
+      {{footerNav}}
+    </ul>
+  </nav>
+  <ul class="social">
+    {{social}}
+  </ul>
+</footer>
+
+<script src="{{base}}assets/js/main.js" defer></script>
+</body>
+</html>

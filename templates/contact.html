@@ -1,0 +1,15 @@
+<section class="page contact-page">
+  <div class="contact-inner">
+    <form class="contact-form" id="contactForm" method="post" action="{{formAction}}" target="hidden_iframe">
+      {{formFields}}
+      <button class="submit" type="submit"{{submitDisabled}}>{{submitLabel}}</button>
+      {{formNotice}}
+    </form>
+
+    <div class="contact-thanks" id="contactThanks" hidden>
+      <p class="thanks-title">{{thanksTitle}}</p>
+      <p class="thanks-text">{{thanksText}}</p>
+    </div>
+  </div>
+  <iframe name="hidden_iframe" id="hidden_iframe" title="送信先" style="display:none" aria-hidden="true"></iframe>
+</section>

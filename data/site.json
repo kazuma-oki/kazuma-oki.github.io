@@ -1,0 +1,60 @@
+{
+  "siteName": "MY PORTFOLIO",
+  "logo": "KAZUMA",
+  "description": "大木千馬（Kazuma Oki）のポートフォリオサイト。Webデザイン・コーディングの制作実績を掲載しています。",
+  "heroTitle": ["KAZUMA", "OKI"],
+  "heroSubtitle": "Portfolio",
+  "heroImage": "assets/images/hero.webp",
+  "heroImageAlt": "黄色いドレスをまとい青空に向かって手を伸ばす人物",
+  "nav": [
+    { "label": "Works", "href": "index.html#work" },
+    { "label": "About Me", "href": "about.html" },
+    { "label": "Contact", "href": "contact.html" }
+  ],
+  "footerNav": [
+    { "label": "Top", "href": "index.html#top" },
+    { "label": "Works", "href": "index.html#work" },
+    { "label": "About me", "href": "about.html" },
+    { "label": "Contact", "href": "contact.html" }
+  ],
+  "social": [
+    { "name": "X", "href": "https://x.com/" },
+    { "name": "Instagram", "href": "https://www.instagram.com/" }
+  ],
+  "aboutBanner": {
+    "heading": "About me",
+    "sub": "(ページ制作中）",
+    "href": "about.html"
+  },
+  "about": {
+    "heading": "About me(制作・修正中）",
+    "image": "",
+    "imagePlaceholder": "画像が入ります（準備中）",
+    "name": "大木 千馬 - Kazuma Oki",
+    "body": [
+      "2001年12月、茨城県出身。現在慶應義塾大学経済学部に在籍中。",
+      "「情報は、ただ存在するだけでは意味がない。」\nどんなに価値のある情報でも、伝え方次第で誤解を生んだり、届くべき人に届かなかったりする。",
+      "経済を学ぶ中で、「人々の行動を左右するのは情報である」と強く実感しました。特に、誤った情報が拡散されることで社会に混乱が生じる場面を目の当たりにし、「正しい情報を、わかりやすく、魅力的に伝えることができれば、人々の選択はもっと良いものになるのでは？」と考えるようになりました。",
+      "そこで出会ったのが Webデザイン です。\nインターネットが情報の中心となった今、視覚的なデザインが人々の理解や印象を大きく左右します。「伝えたいことを、適切に、分かりやすくデザインする」スキルを身につけるため、私はWebデザインを学び始めました。",
+      "このポートフォリオでは、未熟な私が学びながら制作したデザインを紹介していこうと思います。"
+    ]
+  },
+  "contact": {
+    "fields": [
+      { "name": "name", "label": "フルネーム", "type": "text", "placeholder": "例：山田　太郎", "required": true },
+      { "name": "email", "label": "Email", "type": "email", "placeholder": "例：example@co.jp", "required": true },
+      { "name": "message", "label": "ご連絡・お問い合わせ内容", "type": "textarea", "placeholder": "ここに内容を入力してください。", "required": true }
+    ],
+    "submitLabel": "送信",
+    "thanksTitle": "送信ありがとうございました",
+    "thanksText": "内容を確認のうえ、折り返しご連絡いたします。"
+  },
+  "googleForm": {
+    "actionUrl": "",
+    "entries": {
+      "name": "",
+      "email": "",
+      "message": ""
+    }
+  }
+}
