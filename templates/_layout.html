@@ -38,14 +38,16 @@
 </main>
 
 <footer class="site-footer">
-  <nav class="footer-nav" aria-label="フッターナビゲーション">
-    <ul>
-      {{footerNav}}
+  <div class="footer-inner">
+    <nav class="footer-nav" aria-label="フッターナビゲーション">
+      <ul>
+        {{footerNav}}
+      </ul>
+    </nav>
+    <ul class="social">
+      {{social}}
     </ul>
-  </nav>
-  <ul class="social">
-    {{social}}
-  </ul>
+  </div>
 </footer>
 
 <script src="{{base}}assets/js/main.js" defer></script>

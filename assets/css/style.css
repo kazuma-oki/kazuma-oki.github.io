@@ -22,10 +22,12 @@
   --font-en: "Montserrat", "Helvetica Neue", Arial, sans-serif;
   --font-jp: "Noto Sans JP", "Hiragino Kaku Gothic ProN", "Yu Gothic", Meiryo, sans-serif;
 
+  --ease: cubic-bezier(0.4, 0.4, 0, 1);
+  --ease-dur: 0.3s;
   --header-h: 90px;
   --container: 1280px;
   --gutter: 40px;
-  --detail-width: 840px;
+  --detail-width: 880px;
 }
 
 /* ---------- base ---------- */
@@ -90,14 +92,16 @@ a { color: inherit; text-decoration: none; }
 }
 
 .gnav a {
+  display: block;
+  padding: 9.5px 0;
   font-family: var(--font-en);
   font-size: 15px;
   font-weight: 500;
   line-height: 21px;
   color: var(--text);
-  transition: opacity 0.25s ease;
+  transition: transform var(--ease-dur) var(--ease);
 }
-.gnav a:hover { opacity: 0.55; }
+.gnav a:hover { transform: scale(1.2); }
 
 .nav-toggle {
   display: none;
@@ -200,7 +204,11 @@ a { color: inherit; text-decoration: none; }
   gap: 40px;
 }
 
-.work-card a { display: block; }
+.work-card a {
+  display: block;
+  transition: transform var(--ease-dur) var(--ease);
+}
+.work-card a:hover { transform: scale(1.02); }
 
 .work-thumb {
   display: block;
@@ -212,9 +220,7 @@ a { color: inherit; text-decoration: none; }
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: transform 0.6s cubic-bezier(0.22, 0.61, 0.36, 1);
 }
-.work-card a:hover .work-thumb img { transform: scale(1.04); }
 
 .work-meta {
   display: block;
@@ -242,11 +248,16 @@ a { color: inherit; text-decoration: none; }
   display: flex;
   flex-direction: column;
   justify-content: center;
+  align-items: flex-start;
   min-height: 160px;
   padding-inline: var(--gutter);
-  transition: opacity 0.25s ease;
 }
-.about-banner a:hover { opacity: 0.7; }
+.about-banner-inner {
+  display: inline-block;
+  transform-origin: center;
+  transition: transform var(--ease-dur) var(--ease);
+}
+.about-banner a:hover .about-banner-inner { transform: scale(1.2); }
 
 .about-banner-title {
   display: block;
@@ -262,8 +273,11 @@ a { color: inherit; text-decoration: none; }
 }
 
 /* ---------- footer ---------- */
-.site-footer {
-  padding: 80px;
+.site-footer { padding: 0; }
+.footer-inner {
+  max-width: 1360px;
+  margin-inline: auto;
+  padding: 80px var(--gutter);
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -283,9 +297,9 @@ a { color: inherit; text-decoration: none; }
   font-weight: 500;
   line-height: 21px;
   color: var(--text);
-  transition: opacity 0.25s ease;
+  transition: transform var(--ease-dur) var(--ease);
 }
-.footer-nav a:hover { opacity: 0.55; }
+.footer-nav a:hover { transform: scale(1.2); }
 
 .social {
   display: flex;
@@ -295,9 +309,7 @@ a { color: inherit; text-decoration: none; }
 .social a {
   display: block;
   color: var(--dark);
-  transition: opacity 0.25s ease;
 }
-.social a:hover { opacity: 0.55; }
 .social svg { width: 20px; height: 20px; fill: currentColor; }
 
 /* ---------- 下層ページ共通 ---------- */
@@ -316,9 +328,8 @@ a { color: inherit; text-decoration: none; }
   font-weight: 300;
   line-height: 21px;
   color: var(--body-text);
-  transition: opacity 0.25s ease;
 }
-.back-link a:hover { opacity: 0.6; }
+
 
 .back-arrow {
   width: 24px;
@@ -350,18 +361,21 @@ a { color: inherit; text-decoration: none; }
 .about-page { padding-bottom: 0; }
 
 /* ---------- about ---------- */
+/* 旧サイト実測：2カラム（枠30% / gap160）、枠の高さは行に追従（stretch） */
 .about-grid {
-  margin-top: 40px;
+  margin-top: 41px;
   display: grid;
-  grid-template-columns: 360px 1fr;
+  grid-template-columns: 30% 1fr;
   gap: 80px;
+  align-items: stretch;
 }
 
 .about-visual .about-placeholder {
   display: flex;
   align-items: center;
   justify-content: center;
-  aspect-ratio: 360 / 628;
+  height: 100%;
+  min-height: 200px;
   border: 1px solid #000;
   font-family: "Lato", var(--font-jp);
   font-size: 18px;
@@ -369,8 +383,9 @@ a { color: inherit; text-decoration: none; }
   color: #9b9898;
   text-align: center;
 }
+.about-visual img { width: 100%; height: 100%; object-fit: cover; }
 
-.about-text { padding-top: 80px; }
+.about-text { padding: 80px 80px 80px 0; }
 
 .about-name {
   font-size: 18px;
@@ -378,19 +393,19 @@ a { color: inherit; text-decoration: none; }
   color: var(--text);
 }
 
-.about-text p + p { margin-top: 1.7em; }
-
 .about-body {
-  font-size: 15px;
-  line-height: 2;
+  font-size: 16px;
+  line-height: 1.4;
   color: var(--text);
 }
+.about-name + .about-body { margin-top: 40px; }
+.about-body + .about-body { margin-top: 1.4em; }
 
 /* ---------- works detail ---------- */
 .detail-inner {
   max-width: var(--detail-width);
   margin: 64px auto 0;
-  padding-inline: 20px;
+  padding-inline: var(--gutter);
 }
 
 .detail-meta {
@@ -520,11 +535,7 @@ a { color: inherit; text-decoration: none; }
 .field textarea { height: 160px; resize: vertical; }
 .field input::placeholder,
 .field textarea::placeholder { color: #b5b5b5; }
-.field input:focus,
-.field textarea:focus {
-  outline: none;
-  border-color: var(--badge);
-}
+
 
 .submit {
   display: block;
@@ -540,9 +551,7 @@ a { color: inherit; text-decoration: none; }
   font-weight: 700;
   line-height: 1;
   cursor: pointer;
-  transition: opacity 0.25s ease;
 }
-.submit:hover { opacity: 0.8; }
 .submit:disabled { background: #9b9898; cursor: not-allowed; }
 
 .form-notice {
@@ -579,7 +588,7 @@ a { color: inherit; text-decoration: none; }
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   .appear { opacity: 1; transform: none; transition: none; }
-  .work-thumb img { transition: none; }
+  
 }
 
 /* ============================================================
@@ -606,30 +615,31 @@ a { color: inherit; text-decoration: none; }
   }
   .gnav a { font-size: 20px; }
 
+  /* 以下は旧サイト実測値（840/768/700pxで照合） */
   .hero { height: 70vh; max-height: none; min-height: 480px; }
-  .hero-image { inset: 0 0 0 42%; border-radius: 0 0 0 100px; }
   .hero-title { font-size: 95px; letter-spacing: 5px; }
-  .hero-sub { font-size: 25px; }
+  .hero-sub { font-size: 30px; }
 
   .section-title,
   .page-title { font-size: 32px; }
 
-  .work-list { margin-top: 70px; gap: 30px; }
-
-  .about-banner { padding: 120px 0; }
-  .about-banner a { min-height: 0; }
-  .about-banner-title { font-size: 32px; line-height: 45px; }
-
-  .site-footer { padding: 60px 40px; }
   .footer-nav ul { gap: 40px; }
 
-  .about-grid {
-    grid-template-columns: 300px 1fr;
-    gap: 40px;
-  }
-  .about-text { padding-top: 40px; }
+  .works { padding-bottom: 140px; }
+  .work-list { margin-top: 55px; }
 
-  .detail-main-image { margin-top: 60px; }
+  .about-page .page-inner { padding-top: 92px; }
+  .page-title { font-size: 32px; }
+  .about-grid {
+    margin-top: 36px;
+    grid-template-columns: 1fr;
+    gap: 80px;
+  }
+  .about-page { padding-bottom: 80px; }
+  .about-visual .about-placeholder { height: 387px; min-height: 0; }
+  .about-text { padding: 0 40px; }
+  .about-name { font-size: 16px; line-height: 22.4px; }
+  .about-body { font-size: 14px; }
 }
 
 /* ============================================================
@@ -641,13 +651,14 @@ a { color: inherit; text-decoration: none; }
   .site-header { padding: 0 20px; }
 
   .hero { min-height: 420px; }
-  .hero-image { inset: 0 0 0 42%; border-radius: 0 0 0 80px; }
+  .hero-image { inset: 0 0 0 40%; border-radius: 0 0 0 100px; }
   .hero-body { left: 20px; bottom: 50px; }
   .hero-title { font-size: 65px; letter-spacing: 3px; }
   .hero-sub { font-size: 15px; }
 
   .works { padding: 160px 0 140px; }
-  .section-title, .page-title { font-size: 28px; }
+  .section-title { font-size: 28px; }
+  .page-title { font-size: 24px; }
 
   .work-list {
     margin-top: 57px;
@@ -658,9 +669,10 @@ a { color: inherit; text-decoration: none; }
   .work-name { font-size: 18px; }
 
   .about-banner { padding: 94px 0; }
+  .about-banner a { min-height: 0; }
   .about-banner-title { font-size: 28px; line-height: 39.2px; }
 
-  .site-footer {
+  .footer-inner {
     padding: 40px 20px;
     flex-direction: column;
     align-items: stretch;
@@ -670,19 +682,13 @@ a { color: inherit; text-decoration: none; }
   .footer-nav a { font-size: 13px; line-height: 18.2px; }
   .social { justify-content: flex-end; }
 
-  .back-link { padding-top: 110px; }
-
   .about-page .page-inner { padding-top: 100px; }
-  .about-grid {
-    grid-template-columns: 1fr;
-    gap: 40px;
-  }
-  .about-text { padding-top: 0; }
+  .about-grid { margin-top: 36px; }
+  .about-visual .about-placeholder { height: 250px; }
+  .about-text { padding: 0 20px; }
 
-  .detail-inner { margin-top: 40px; }
-  .detail-title { font-size: 24px; }
-  .detail-main-image { margin-top: 40px; }
-  .detail-body { margin-top: 40px; }
+  .detail-inner { margin-top: 69px; padding-inline: 20px; }
+  .detail-title { font-size: 24px; line-height: 31.2px; }
 
-  .contact-page { padding-top: calc(var(--header-h) + 60px); padding-bottom: 80px; }
+  .contact-page { padding-top: calc(var(--header-h) + 70px); padding-bottom: 54px; }
 }
